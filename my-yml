@@ -1,0 +1,16 @@
+---
+- hosts: all
+  connection: ssh
+  become: yes
+  become_method: sudo
+  tasks: 
+    - name: install httpd
+      yum: 
+        name: "{{ item }}"
+        state: installed
+      with_items: 
+        - httpd
+        - bind
+        - bind-utils
+        - telnet
+
